@@ -1,9 +1,12 @@
+import { useState } from "react";
+import styled from "styled-components"
 import Flashcards from "./Flashcards";
 import Footer from "./Footer";
 import logo from "../assets/logo.png"
-import styled from "styled-components"
+import cards from "/cards"
 
 export default function ContainerTela() {
+  const [contador, setContador] = useState(0)
 
   return (
 
@@ -13,15 +16,11 @@ export default function ContainerTela() {
         <h1>ZapRecall</h1>
       </Logo>
 
+      {cards.map((card, index) => (
+        <Flashcards key={card} index={index} card={card} />))}
 
-      < Flashcards />
-      < Flashcards />
-      < Flashcards />
-      < Flashcards />
-      < Flashcards />
-      
 
-      < Footer />
+      < Footer perguntas={cards.length} concluidos={contador} />
     </Container>
 
   )

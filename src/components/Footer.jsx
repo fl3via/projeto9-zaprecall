@@ -1,11 +1,12 @@
 import { styled } from "styled-components"
 
-export default function Footer() {
+
+export default function Footer({perguntas, concluidos}) {
 
   return (
 
     <FooterConcluidos>
-      0/4 CONCLUÍDOS
+     {concluidos}/{perguntas} CONCLUÍDOS
     </FooterConcluidos>
 
   )
