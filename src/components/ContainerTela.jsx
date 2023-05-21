@@ -8,6 +8,10 @@ import cards from "/cards"
 export default function ContainerTela() {
   const [contador, setContador] = useState(0)
 
+  function contadorDeTarefas() {
+    setContador(contador + 1)
+  }
+
   return (
 
     <Container>
@@ -17,7 +21,7 @@ export default function ContainerTela() {
       </Logo>
 
       {cards.map((card, index) => (
-        <Flashcards key={card} index={index} card={card} />))}
+        <Flashcards key={card} index={index} card={card} contadorDeTarefas={contadorDeTarefas} />))}
 
 
       < Footer perguntas={cards.length} concluidos={contador} />
@@ -33,6 +37,7 @@ background-color: #FB6B6B;
 display: flex;
 align-items: center;
 flex-direction: column;
+margin-bottom: 70px;
 `
 
 const Logo = styled.div`

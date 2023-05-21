@@ -12,7 +12,7 @@ import {cinza} from "../css/colors"
 import {rosa} from "../css/colors"
 
 
-export default function Flashcards({ index, card }) {
+export default function Flashcards({ index, card, contadorDeTarefas}) {
     const [inicio, setInicio] = useState(false)
     const [virada, setVirada] = useState(false)
     const [perguntaFinalizada, setPerguntaFinalizada] = useState(false)
@@ -32,6 +32,7 @@ export default function Flashcards({ index, card }) {
         setInicio(false)
         setPerguntaFinalizada(true)
         setStatusDaPergunta(status)
+        contadorDeTarefas();
     }
 
     function seletor() {
@@ -53,7 +54,7 @@ export default function Flashcards({ index, card }) {
             return (
                 <Cards status={statusDaPergunta}>
                     <p>Pergunta {index + 1}</p>
-                    <img src={seletor()} onClick={mostrarPergunta} />
+                    <img src={seletor()} onClick={mostrarPergunta} data-test="play-btn" />
                 </Cards>
             );
         case !virada:
@@ -68,9 +69,9 @@ export default function Flashcards({ index, card }) {
                 <CardAberto>
                     {card.answer}
                     <Botoes>
-                        <button onClick={() => perguntaRespondida('errado')}>Não Lembrei</button>
-                        <button onClick={() => perguntaRespondida('quase')}>Quase não lembrei</button>
-                        <button onClick={() => perguntaRespondida('certo')}>Zap!</button>
+                        <button className="errado" onClick={() => perguntaRespondida('errado')}>Não Lembrei</button>
+                        <button className="quase" onClick={() => perguntaRespondida('quase')}>Quase não lembrei</button>
+                        <button  className="certo" onClick={() => perguntaRespondida('certo')}>Zap!</button>
                     </Botoes>
                 </CardAberto>
             );
@@ -84,19 +85,26 @@ const Cards = styled.div`
   background: #FFFFFF;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
-  display: flex;
+  display: flex; 
   align-items: center;
   margin-bottom: 25px;
   padding-left: 15px;
   justify-content: space-between;
   padding-right: 15px;
   
-  
   p {
     font-family: 'Recursive';
     font-style: normal;
     font-weight: 700;
     font-size: 16px; 
+    text-decoration: ${props => {
+        if (props.setStatusDaPergunta === 'nao respondido') {
+          return 'none';
+        } else {
+          return 'line-through';
+        }
+      }};
+      
     color: ${props => {
         return props.status === 'certo'
           ? verde
@@ -148,10 +156,23 @@ font-weight: 400;
 font-size: 12px;
 border-radius: 5px;
 border: none;
+color: #FFFFFF;
 display: flex;
 align-items: center;
-text-align: center;
-color: #FFFFFF;
+justify-content: center;
+}
 
+ .errado {
+    background-color: red;
  }
+
+.quase {
+    background-color: #FF922E;
+}
+
+.certo {
+    background-color: #2FBE34;
+}
+
 `
+
