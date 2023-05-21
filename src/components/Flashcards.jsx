@@ -49,29 +49,31 @@ export default function Flashcards({ index, card, contadorDeTarefas}) {
         }
     }
 
+    
+
     switch (true) {
         case !inicio:
             return (
-                <Cards status={statusDaPergunta}>
+                <Cards status={statusDaPergunta} >
                     <p>Pergunta {index + 1}</p>
                     <img src={seletor()} onClick={mostrarPergunta} data-test="play-btn" />
                 </Cards>
             );
         case !virada:
             return (
-                <CardAberto>
+                <CardAberto >
                     {card.question}
-                    <img src={setaVirada} onClick={mostrarResposta} />
+                    <img data-test="turn-btn" src={setaVirada} onClick={mostrarResposta} />
                 </CardAberto>
             );
         default:
             return (
-                <CardAberto>
+                <CardAberto >
                     {card.answer}
                     <Botoes>
-                        <button className="errado" onClick={() => perguntaRespondida('errado')}>Não Lembrei</button>
-                        <button className="quase" onClick={() => perguntaRespondida('quase')}>Quase não lembrei</button>
-                        <button  className="certo" onClick={() => perguntaRespondida('certo')}>Zap!</button>
+                        <button className="errado" onClick={() => perguntaRespondida('errado')} data-test="no-btn">Não Lembrei</button>
+                        <button className="quase" onClick={() => perguntaRespondida('quase')} data-test="partial-btn" >Quase não lembrei</button>
+                        <button  className="certo" onClick={() => perguntaRespondida('certo')} data-test="zap-btn">Zap!</button>
                     </Botoes>
                 </CardAberto>
             );
@@ -98,7 +100,7 @@ const Cards = styled.div`
     font-weight: 700;
     font-size: 16px; 
     text-decoration: ${props => {
-        if (props.setStatusDaPergunta === 'nao respondido') {
+        if (props.status === 'nao respondido') {
           return 'none';
         } else {
           return 'line-through';
@@ -114,7 +116,7 @@ const Cards = styled.div`
           ? laranja
           : cinza;
       }}
-      }
+      
   `
 
 const CardAberto = styled.div`
