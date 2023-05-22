@@ -71,9 +71,9 @@ export default function Flashcards({ index, card, contadorDeTarefas}) {
                 <CardAberto data-test="flashcard" >
                  <p data-test="flashcard-text">{card.answer}</p>   
                     <Botoes>
-                        <button className="errado" onClick={() => perguntaRespondida('errado')} data-test="no-btn, no-icon">Não Lembrei</button>
-                        <button className="quase" onClick={() => perguntaRespondida('quase')} data-test="partial-btn, partial-icon" >Quase não lembrei</button>
-                        <button  className="certo" onClick={() => perguntaRespondida('certo')} data-test="zap-btn, zap-icon">Zap!</button>
+                        <button className="errado" onClick={() => perguntaRespondida('errado')} data-test="no-btn">Não Lembrei</button>
+                        <button className="quase" onClick={() => perguntaRespondida('quase')} data-test="partial-btn" >Quase não lembrei</button>
+                        <button  className="certo" onClick={() => perguntaRespondida('certo')} data-test="zap-btn">Zap!</button>
                     </Botoes>
                 </CardAberto>
             );
