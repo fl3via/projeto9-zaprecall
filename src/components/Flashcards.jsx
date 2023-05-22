@@ -62,14 +62,14 @@ export default function Flashcards({ index, card, contadorDeTarefas}) {
         case !virada:
             return (
                 <CardAberto data-test="flashcard-text">
-                    {card.question}
+                    <p>{card.question}</p>
                     <img data-test="turn-btn" src={setaVirada} onClick={mostrarResposta} />
                 </CardAberto>
             );
         default:
             return (
-                <CardAberto data-test="flashcard-text">
-                    {card.answer}
+                <CardAberto data-test="flashcard-text" >
+                 <p>{card.answer}</p>   
                     <Botoes>
                         <button className="errado" onClick={() => perguntaRespondida('errado')} data-test="no-btn">Não Lembrei</button>
                         <button className="quase" onClick={() => perguntaRespondida('quase')} data-test="partial-btn" >Quase não lembrei</button>
