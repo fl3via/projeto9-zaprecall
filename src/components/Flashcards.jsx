@@ -46,7 +46,7 @@ export default function Flashcards({ index, card, taskCounter }) {
       case !start:
         return (
           <Cards status={questionStatus} data-test="flashcard">
-            <p data-test="flashcard-text">Question {index + 1}</p>
+            <p data-test="flashcard-text">Pergunta {index + 1}</p>
             <img src={iconSelector()} onClick={showQuestion} data-test="play-btn" />
           </Cards>
         );
@@ -62,8 +62,8 @@ export default function Flashcards({ index, card, taskCounter }) {
           <OpenCard data-test="flashcard" >
             <p data-test="flashcard-text">{card.answer}</p>
             <Buttons>
-              <button className="wrong" onClick={() => answeredQuestion('wrong')} data-test="no-btn">Didn't Recall</button>
-              <button className="nearly" onClick={() => answeredQuestion('nearly')} data-test="partial-btn" >Almost</button>
+              <button className="wrong" onClick={() => answeredQuestion('wrong')} data-test="no-btn">Não Lembrei</button>
+              <button className="nearly" onClick={() => answeredQuestion('nearly')} data-test="partial-btn" >Quase Lembrei</button>
               <button className="correct" onClick={() => answeredQuestion('correct')} data-test="zap-btn">Zap!</button>
             </Buttons>
           </OpenCard>
