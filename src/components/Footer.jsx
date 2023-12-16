@@ -1,32 +1,11 @@
-import { styled } from "styled-components"
+import { CompletedFooter } from "../Styled/FooterStyled"
 
-
-export default function Footer({perguntas, concluidos}) {
-
+export default function Footer({ questions, completed }) {
   return (
-
-    <FooterConcluidos  data-test="footer" >
-     {concluidos}/{perguntas} CONCLUÍDOS
-    </FooterConcluidos>
-
+    <CompletedFooter data-test="footer">
+      {completed}/{questions} COMPLETED
+    </CompletedFooter>
   )
 }
 
-const FooterConcluidos = styled.div`
-width: 100%;
-min-height: 50px;
-color: #333333;
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-background: #FFFFFF;
-box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
-display: flex;
-justify-content: center;
-align-items: center;
-padding: 10px;
-bottom: 0;
-flex-direction: column;
-font-family: 'Recursive';
-position: fixed;
-`
+

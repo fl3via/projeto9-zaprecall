@@ -1,4 +1,4 @@
-import GlobalStyle from "./css/GlobalStyle"
+import GlobalStyle from "./Styled/GlobalStyle"
 import ContainerTela from "./components/ContainerTela"
 
 
