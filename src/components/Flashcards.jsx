@@ -50,8 +50,7 @@ export default function Flashcards({ index, card, contadorDeTarefas}) {
     }
 
     
-
-    switch (true) {
+ switch (true) {
         case !inicio:
             return (
                 <Cards status={statusDaPergunta} data-test="flashcard">
